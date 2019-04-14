@@ -1,4 +1,4 @@
-``
-expor DOCKER_BUILDKIT=1
-run 
+```
+export DOCKER_BUILDKIT=1
+run <repo>
 ```

@@ -2,8 +2,8 @@
 
 set +exuo pipefail
 
-if [[ -r dbuild.yaml ]] ; then
-    DBUILD=dbuild.yaml
+if [[ -r dbuild.json ]] ; then
+    DBUILD=dbuild.json
 fi
 
 if ! ($DBUILD && $(cat $DBUILD | jq --raw-output '. | .dependencies.override//false'))  ; then

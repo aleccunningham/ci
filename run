@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set +euo pipefail
+
+GITHUB=https://github.com/
+ORG=${ORG}/
+REPO=${$1:-account_service}
+
+print_usage() {
+  printf "Usage..."
+}
+
+while getopts 'abf:v' flag; do
+  case "${flag}" in
+    a) a_flag='true' ;;
+    b) b_flag='true' ;;
+    f) files="${OPTARG}" ;;
+    v) verbose='true' ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+docker run --rm -t \
+  --ssh default \
+  --name $REPO_CI
+  -e REPO_URL="${GITHUB}"/"${ORG}"/"${REPO}".git \
+  -e BRANCH="${BRANCH}" \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $(which docker):/usr/bin/docker \
+  -v output/:/src/output \
+  r.alec.cx/runner

@@ -1,0 +1,21 @@
+{
+    "dependencies": {
+        "override": false,
+        "custom": [
+            "export DB_URL=$DATABASE_URL"
+        ]
+    },
+    "setup": {
+        "override": false,
+        "custom": [
+            "apt-get install -y phantomjs",
+            "bower install"
+        ]
+    },
+    "test": {
+        "override": true,
+        "custom": [
+            "pytest -vvv"
+        ]
+    }
+}
